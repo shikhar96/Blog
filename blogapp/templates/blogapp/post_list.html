@@ -1,21 +1,12 @@
-<html>
-    <head>
-        <title>Blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">Shikhar's Blog</a></h1>
-        </div>
-
-        <div>
+    {% extends 'blogapp/base.html' %}   
+        {% block content %}
             {% for post in posts %}
-                <div>
-                <h1>{{ post.title }}</h1>
-                <p>{{ post.text }}</p>
-                <p>Published on: {{ post.published_date }}</p>
-                <p>{{ post.comment }}</p>
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
                 </div>
-            {% endfor %}  
-        </div>
-    </body>
-</html>
+            {% endfor %}
+        {% endblock %}
